@@ -6,6 +6,7 @@ forge test --match-path ./test/sub/SimpleStorage.t.sol
 yarn install
 
 git rm --cached lib/ -r
+git rm --cached node_modules/ -r
 ```
 
 ## Foundry

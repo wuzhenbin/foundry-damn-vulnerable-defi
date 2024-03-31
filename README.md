@@ -1,3 +1,13 @@
+```shell
+forge test --match-path ./test/unstoppable.t.sol
+
+forge test --match-path ./test/sub/SimpleStorage.t.sol
+
+yarn install
+
+git rm --cached lib/ -r
+```
+
 ## Foundry
 
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**

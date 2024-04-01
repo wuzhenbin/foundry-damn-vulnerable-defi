@@ -1,10 +1,10 @@
 ```shell
 forge test --match-path ./test/unstoppable.t.sol
+forge test --match-path ./test/naive-receiver.t.sol
 
 forge test --match-path ./test/sub/SimpleStorage.t.sol
-
-
 forge inspect UnstoppableVault methods
+forge inspect NaiveReceiverLenderPool methods
 
 yarn install
 

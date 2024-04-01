@@ -5,6 +5,7 @@
     "@openzeppelin/contracts": "4.7.1",
     "@openzeppelin/contracts-upgradeable": "4.7.1",
     "@openzeppelin/hardhat-upgrades": "1.20.0",
-    "solmate": "6.6.1"
+    "solmate": "6.6.1",
+    "solady": "0.0.67"
   }
 }

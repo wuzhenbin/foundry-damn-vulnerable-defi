@@ -3,6 +3,9 @@ forge test --match-path ./test/unstoppable.t.sol
 
 forge test --match-path ./test/sub/SimpleStorage.t.sol
 
+
+forge inspect UnstoppableVault methods
+
 yarn install
 
 git rm --cached lib/ -r

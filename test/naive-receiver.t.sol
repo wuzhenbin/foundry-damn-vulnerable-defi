@@ -82,5 +82,6 @@ contract UnstopableTest is Test {
             pool.flashLoan(receiver, ETH, ETHER_IN_RECEIVER, "0x");
         }
         assertEq(address(receiver).balance, 0);
+        assertEq(address(pool).balance, ETHER_IN_POOL + ETHER_IN_RECEIVER);
     }
 }

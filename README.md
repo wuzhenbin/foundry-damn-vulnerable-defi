@@ -1,6 +1,7 @@
 ```shell
 forge test --match-path ./test/unstoppable.t.sol
 forge test --match-path ./test/naive-receiver.t.sol
+forge test --match-path ./test/truster.t.sol
 
 forge test --match-path ./test/sub/SimpleStorage.t.sol
 forge inspect UnstoppableVault methods

@@ -3,6 +3,7 @@ forge test --match-path ./test/unstoppable.t.sol
 forge test --match-path ./test/naive-receiver.t.sol
 forge test --match-path ./test/truster.t.sol
 forge test --match-path ./test/side-entrance.t.sol
+forge test --match-path ./test/the-rewarder.t.sol
 
 forge test --match-path ./test/sub/SimpleStorage.t.sol
 forge inspect UnstoppableVault methods
@@ -12,6 +13,16 @@ yarn install
 
 git rm --cached lib/ -r
 git rm --cached node_modules/ -r
+
+surya describe src/the-rewarder/FlashLoanerPool.sol
+surya describe src/the-rewarder/AccountingToken.sol
+surya describe src/the-rewarder/RewardToken.sol
+surya describe src/the-rewarder/TheRewarderPool.sol
+
+surya graph src/the-rewarder/FlashLoanerPool.sol | dot -Tpng > graph/the-rewarder/FlashLoanerPool.png
+surya graph src/the-rewarder/AccountingToken.sol | dot -Tpng > graph/the-rewarder/AccountingToken.png
+surya graph src/the-rewarder/RewardToken.sol | dot -Tpng > graph/the-rewarder/RewardToken.png
+surya graph src/the-rewarder/TheRewarderPool.sol | dot -Tpng > graph/the-rewarder/TheRewarderPool.png
 ```
 
 ## Foundry

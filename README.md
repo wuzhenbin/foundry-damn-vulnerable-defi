@@ -5,6 +5,7 @@ forge test --match-path ./test/truster.t.sol
 forge test --match-path ./test/side-entrance.t.sol
 forge test --match-path ./test/the-rewarder.t.sol
 forge test --match-path ./test/selfie.t.sol
+forge test --match-path ./test/compromised.t.sol
 
 forge test --match-path ./test/sub/SimpleStorage.t.sol
 forge inspect UnstoppableVault methods

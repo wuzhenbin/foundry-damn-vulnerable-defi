@@ -5,9 +5,9 @@ import {Test, console} from "forge-std/Test.sol";
 
 import "@openzeppelin/contracts/interfaces/IERC3156FlashBorrower.sol";
 import "@openzeppelin/contracts/interfaces/IERC20.sol";
-import {SimpleGovernance} from "../src/Selfie/SimpleGovernance.sol";
+import {SimpleGovernance} from "../src/selfie/SimpleGovernance.sol";
+import {SelfiePool} from "../src/selfie/SelfiePool.sol";
 import {DamnValuableTokenSnapshot} from "../src/DamnValuableTokenSnapshot.sol";
-import {SelfiePool} from "../src/Selfie/SelfiePool.sol";
 
 /*  
 _hasEnoughVotes

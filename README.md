@@ -6,6 +6,7 @@ forge test --match-path ./test/side-entrance.t.sol
 forge test --match-path ./test/the-rewarder.t.sol
 forge test --match-path ./test/selfie.t.sol
 forge test --match-path ./test/compromised.t.sol
+forge test --match-path ./test/puppet.t.sol
 
 forge test --match-path ./test/sub/SimpleStorage.t.sol
 forge inspect UnstoppableVault methods
@@ -26,8 +27,8 @@ surya graph src/the-rewarder/AccountingToken.sol | dot -Tpng > graph/the-rewarde
 surya graph src/the-rewarder/RewardToken.sol | dot -Tpng > graph/the-rewarder/RewardToken.png
 surya graph src/the-rewarder/TheRewarderPool.sol | dot -Tpng > graph/the-rewarder/TheRewarderPool.png
 
-surya graph src/Selfie/SimpleGovernance.sol | dot -Tpng > graph/Selfie/SimpleGovernance.png
-surya graph src/Selfie/SelfiePool.sol | dot -Tpng > graph/Selfie/SelfiePool.png
+surya graph src/selfie/SimpleGovernance.sol | dot -Tpng > graph/selfie/SimpleGovernance.png
+surya graph src/selfie/SelfiePool.sol | dot -Tpng > graph/selfie/SelfiePool.png
 ```
 
 ## Foundry

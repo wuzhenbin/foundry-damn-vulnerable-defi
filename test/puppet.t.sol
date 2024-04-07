@@ -5,7 +5,7 @@ import {Test, console} from "forge-std/Test.sol";
 
 import {PuppetPool} from "../src/puppet/PuppetPool.sol";
 import {DamnValuableToken} from "../src/DamnValuableToken.sol";
-import {IUniswapFactory, IUniswapExchange} from "./interface/uniswapV1.sol";
+import {IUniswapFactory, IUniswapExchange} from "../src/interface/uniswapV1.sol";
 
 contract puppetTest is Test {
     DamnValuableToken token;
@@ -51,12 +51,12 @@ contract puppetTest is Test {
 
         // Deploy a exchange that will be used as the factory template
         exchangeTemplate = IUniswapExchange(
-            deployCode("./build-uniswap-v1/UniswapV1Exchange.json")
+            deployCode("./json/UniswapV1Exchange.json")
         );
 
         // Deploy factory, initializing it with the address of the template exchange
         uniswapV1Factory = IUniswapFactory(
-            deployCode("./build-uniswap-v1/UniswapV1Factory.json")
+            deployCode("./json/UniswapV1Factory.json")
         );
         uniswapV1Factory.initializeFactory(address(exchangeTemplate));
 

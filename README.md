@@ -7,6 +7,7 @@ forge test --match-path ./test/the-rewarder.t.sol
 forge test --match-path ./test/selfie.t.sol
 forge test --match-path ./test/compromised.t.sol
 forge test --match-path ./test/puppet.t.sol
+forge test --match-path ./test/puppet-v2.t.sol
 
 forge test --match-path ./test/sub/SimpleStorage.t.sol
 forge inspect UnstoppableVault methods

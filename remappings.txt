@@ -3,3 +3,4 @@ forge-std/=lib/forge-std/src/
 @openzeppelin/=node_modules/@openzeppelin/
 solmate/=node_modules/solmate/
 solady/=node_modules/solady/
+@uniswap/=node_modules/@uniswap/

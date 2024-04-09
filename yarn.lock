@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@gnosis.pm/safe-contracts@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.npmmirror.com/@gnosis.pm/safe-contracts/-/safe-contracts-1.3.0.tgz#316741a7690d8751a1f701538cfc9ec80866eedc"
+  integrity sha512-1p+1HwGvxGUVzVkFjNzglwHrLNA67U/axP0Ct85FzzH8yhGJb4t9jDjPYocVMzLorDoWAfKicGy1akPY9jXRVw==
+
 "@openzeppelin/contracts-upgradeable@4.7.1":
   version "4.7.1"
   resolved "https://registry.npmmirror.com/@openzeppelin/contracts-upgradeable/-/contracts-upgradeable-4.7.1.tgz#f63fc384255d6ac139e0a2561aa207fd7c14183c"

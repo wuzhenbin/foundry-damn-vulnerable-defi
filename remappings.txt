@@ -4,3 +4,4 @@ forge-std/=lib/forge-std/src/
 solmate/=node_modules/solmate/
 solady/=node_modules/solady/
 @uniswap/=node_modules/@uniswap/
+@gnosis.pm/=node_modules/@gnosis.pm/
